@@ -64,56 +64,56 @@
 
 # CI/CD Architecture
 
-┌───────────────┐
-│   Developer   │
-└───────┬───────┘
-        │ git push
-        ▼
-┌───────────────────┐
-│      GitHub       │
-│   Source Control  │
-└─────────┬─────────┘
-          │
-          ▼
-┌───────────────────┐
-│ GitHub Actions    │
-│ Build & Test      │
-└─────────┬─────────┘
-          │
-          ├─────────────► Deploy Frontend
-          │
-          │              ┌─────────────┐
-          │              │   Vercel    │
-          │              └─────────────┘
-          │
-          ▼
-┌───────────────────┐
-│ Deploy Backend    │
-│ SSH / Docker      │
-└─────────┬─────────┘
-          │
-          ▼
-┌───────────────────┐
-│   Contabo VPS     │
-│ Docker + NestJS   │
-└───────────────────┘
+                              ┌───────────────┐
+                              │   Developer   │
+                              └───────┬───────┘
+                                      │ git push
+                                      ▼
+                              ┌───────────────────┐
+                              │      GitHub       │
+                              │   Source Control  │
+                              └─────────┬─────────┘
+                                        │
+                                        ▼
+                              ┌───────────────────┐
+                              │ GitHub Actions    │
+                              │ Build & Test      │
+                              └─────────┬─────────┘
+                                        │
+                                        ├─────────────► Deploy Frontend
+                                        │
+                                        │              ┌─────────────┐
+                                        │              │   Vercel    │
+                                        │              └─────────────┘
+                                        │
+                                        ▼
+                              ┌───────────────────┐
+                              │ Deploy Backend    │
+                              │ SSH / Docker      │
+                              └─────────┬─────────┘
+                                        │
+                                        ▼
+                              ┌───────────────────┐
+                              │   Contabo VPS     │
+                              │ Docker + NestJS   │
+                              └───────────────────┘
 
 
 # Recommended Production Setup
 
-Hostinger
-    │
-    ▼
-Cloudflare
-    │
-    ├── app.yourdomain.com ─────► Vercel
-    │
-    ├── api.yourdomain.com ─────► Contabo VPS
-    │
-    └── cdn.yourdomain.com ─────► Cloudflare CDN
-                                       │
-                                       ▼
-                                 Backblaze B2
+                              Hostinger
+                                  │
+                                  ▼
+                              Cloudflare
+                                  │
+                                  ├── app.yourdomain.com ─────► Vercel
+                                  │
+                                  ├── api.yourdomain.com ─────► Contabo VPS
+                                  │
+                                  └── cdn.yourdomain.com ─────► Cloudflare CDN
+                                                                     │
+                                                                     ▼
+                                                               Backblaze B2
 
 # Technology Responsibilities
 
